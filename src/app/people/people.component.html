@@ -1,0 +1,24 @@
+<app-person-search></app-person-search>
+<h1>Lista de Pessoas</h1>
+<ul class="people">
+  <li *ngFor="let person of people">
+    <a routerLink="/people-detail/{{ person.id }}">
+      <span class="badge">ID: {{ person.id }}</span>
+      <span class="name">Nome: {{ person.name }}</span>
+    </a>
+    <button type="button" class="delete" (click)="delete(person)">x</button>
+  </li>
+</ul>
+<div>
+  <h2>Adicione uma nova pessoa na lista:</h2>
+  <label for="new-person">Nome da pessoa: </label>
+  <input id="new-person" #personName />
+
+  <button
+    type="button"
+    class="add-button"
+    (click)="add(personName.value); personName.value = ''"
+  >
+    Adicionar
+  </button>
+</div>
